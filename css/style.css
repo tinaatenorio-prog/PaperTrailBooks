@@ -1,0 +1,56 @@
+/* Paper Trail Books - Main Styles */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f5f0;
+    color: #333;
+}
+
+header {
+    background-color: #3d3028;
+    color: white;
+    padding: 25px 40px;
+}
+
+header h1 {
+    font-size: 28px;
+}
+
+nav {
+    margin-top: 15px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+nav a:hover {
+    color: #e5bd85;
+}
+
+main {
+    padding: 50px 40px;
+    text-align: center;
+}
+
+main h2 {
+    color: #3d3028;
+    margin-bottom: 15px;
+}
+
+button {
+    background-color: #a66b45;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    cursor: pointer;
+    border-radius: 5px;
+}
