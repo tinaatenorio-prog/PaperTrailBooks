@@ -4,15 +4,30 @@ PGM3002 Cloud Computing — Assessment 3 group project.
 
 ## Current development status
 
-The database-backed catalogue and title/author search have been tested
-locally through XAMPP.
+The database-backed catalogue, title/author search and session-based
+shopping cart have been tested locally through XAMPP.
 
-Verified local behaviours:
+Verified local catalogue behaviours:
 - Display six fictional demonstration books.
 - Search by author.
 - Search by title.
 - Display a message when no books match.
 - Return to the full catalogue using Show all books.
+
+Verified local shopping-cart behaviours:
+- Add available books from the catalogue.
+- Update book quantities.
+- Calculate book subtotals and the cart book total.
+- Reject quantities exceeding available stock without changing the saved cart.
+- Remove individual books.
+- Display an empty-cart message after the last book is removed.
+- Display a disabled Out of stock button for an unavailable book.
+
+The shopping-cart changes were merged into main through pull request #1.
+Post-merge cart and catalogue checks passed locally on 18 November 2026.
+
+The cart is a demonstration only. Adding a book does not reserve stock.
+No orders or payments are processed.
 
 The presence of other pages in this repository does not establish that
 their functionality is complete or tested.
@@ -86,6 +101,12 @@ name shown above. Adjust the address if your local configuration differs.
 | Search for Lantern | The Lantern Bookshop only |
 | Search for zzznomatch | No-results message and no book cards |
 | Click Show all books | Empty search field and all six books |
+| Add The Lantern Bookshop and set quantity to 2 | Book subtotal AUD $49.90 |
+| Add Gardens of Tomorrow once as well | Cart book total AUD $71.90 |
+| Change The Lantern Bookshop quantity to 13 | Stock-limit message; saved quantity stays at 2 and total stays AUD $71.90 |
+| Remove The Lantern Bookshop | Gardens of Tomorrow remains; total AUD $22.00 |
+| Remove the final book | Your cart is empty message |
+| View Learning PHP Step by Step in the catalogue | Disabled Out of stock button |
 
 To check PHP syntax from the project folder in PowerShell:
 
@@ -93,6 +114,8 @@ To check PHP syntax from the project folder in PowerShell:
 C:\xampp\php\php.exe -l catalogue.php
 C:\xampp\php\php.exe -l db.php
 C:\xampp\php\php.exe -l config.example.php
+C:\xampp\php\php.exe -l cart-session.php
+C:\xampp\php\php.exe -l cart.php
 ```
 
 Syntax checks do not replace functional testing.
