@@ -8,8 +8,13 @@ The database-backed catalogue, title/author search, session-based shopping
 cart, customer registration, login and logout have been tested locally
 through XAMPP.
 
-Customer-account work is on feature/customer-accounts and has not yet
-been merged into main.
+Customer registration, login and logout were merged into main through
+pull request #2 (merge commit 7277ae4).
+
+Post-merge PHP syntax checks and browser checks passed locally on
+19 November 2026. Browser checks covered catalogue display and title
+search, login, logout, cart preservation through login/logout, and
+registration-page loading. They did not create another account.
 
 Verified local catalogue behaviours:
 - Display six fictional demonstration books.
