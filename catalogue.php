@@ -1,6 +1,7 @@
 <?php
 
 ini_set('display_errors', '0');
+require __DIR__ . '/cart-session.php';
 
 $books = [];
 $loadError = false;
@@ -63,6 +64,7 @@ function escapeHtml($value)
     <nav aria-label="Main navigation">
         <a href="index.php">Home</a>
         <a href="catalogue.php" aria-current="page">Catalogue</a>
+        <a href="cart.php">Cart</a>
         <a href="login.php">Login</a>
         <a href="register.php">Register</a>
     </nav>
@@ -127,13 +129,31 @@ function escapeHtml($value)
                     </p>
 
                     <?php if ((int) $book['stock_quantity'] > 0): ?>
-                        <p class="stock-available">
-                            In stock:
-                            <?= (int) $book['stock_quantity'] ?> available
-                        </p>
-                    <?php else: ?>
-                        <p class="stock-unavailable">Out of stock</p>
-                    <?php endif; ?>
+    <p class="stock-available">
+        In stock:
+        <?= (int) $book['stock_quantity'] ?> available
+    </p>
+
+    <form action="cart.php" method="post">
+        <input
+            type="hidden"
+            name="csrf_token"
+            value="<?= cartEscape($_SESSION['cart_csrf_token']) ?>"
+        >
+        <input type="hidden" name="action" value="add">
+        <input
+            type="hidden"
+            name="book_id"
+            value="<?= (int) $book['book_id'] ?>"
+        >
+        <input type="hidden" name="quantity" value="1">
+
+        <button type="submit">Add to cart</button>
+    </form>
+<?php else: ?>
+    <p class="stock-unavailable">Out of stock</p>
+    <button type="button" disabled>Out of stock</button>
+<?php endif; ?>
                 </article>
             <?php endforeach; ?>
         </div>
