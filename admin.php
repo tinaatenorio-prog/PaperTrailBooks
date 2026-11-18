@@ -12,6 +12,7 @@
     <h1>Paper Trail Books</h1>
     <nav>
         <a href="index.php">Home</a>
+        <a href="catalogue.php">Catalogue</a>
         <a href="login.php">Customer Login</a>
         <a href="register.php">Register</a>
         <a href="admin.php">Administrator</a>
